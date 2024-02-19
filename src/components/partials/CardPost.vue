@@ -55,7 +55,7 @@ export default {
       class="card-footer text-muted custom-bg d-flex justify-content-between align-items-center"
     >
       <input placeholder="Add a comment" class="w-100" type="text" />
-      <a href="#">Publish</a>
+      <a class="ac_btn" href="#">Publish</a>
     </div>
   </div>
 </template>
