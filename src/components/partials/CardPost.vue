@@ -54,7 +54,7 @@ export default {
     <div
       class="card-footer text-muted custom-bg d-flex justify-content-between align-items-center"
     >
-      <input placeholder="Add a comment" class="w-75" type="text" />
+      <input placeholder="Add a comment" class="w-100" type="text" />
       <a href="#">Publish</a>
     </div>
   </div>
@@ -94,6 +94,18 @@ export default {
     width: 30px;
     height: 30px;
     border-radius: 50%;
+  }
+}
+.card-footer {
+  padding: 10px;
+  input {
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  a {
+    text-decoration: none;
   }
 }
 </style>

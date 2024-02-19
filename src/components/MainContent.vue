@@ -1,6 +1,7 @@
 <script>
 import LeftMain from "./LeftMain.vue";
 import RightMain from "./RightMain.vue";
+
 export default {
   name: "MainContent",
   components: {
