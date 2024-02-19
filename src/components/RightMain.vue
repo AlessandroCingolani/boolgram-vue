@@ -1,6 +1,12 @@
 <script>
+import { store } from "../data/store";
 export default {
   name: "RightMain",
+  data() {
+    return {
+      store,
+    };
+  },
 };
 </script>
 
@@ -13,8 +19,8 @@ export default {
       <img src="/img/profile.jpg" alt="profile" />
     </div>
     <div class="nickname d-flex flex-column">
-      <span>Nickname</span>
-      <span>Real name</span>
+      <span><strong>michelepapagni</strong></span>
+      <span>Michele Papagni</span>
     </div>
     <a class="ac_btn" href="">Pass at</a>
   </div>
@@ -26,13 +32,15 @@ export default {
         <span>Mostra tutti</span>
       </div>
       <div
+        v-for="suggestion in store.profiles"
+        :key="suggestion.id"
         class="col-12 my-4 d-flex justify-content-between align-items-center"
       >
         <div class="suggestion-profile d-flex align-items-center">
           <div class="profile-img">
-            <img src="/img/profile.jpg" alt="" />
+            <img :src="suggestion.profile_picture" alt="" />
           </div>
-          <span class="ps-3">Name profile</span>
+          <span class="ps-3">{{ suggestion.profile_name }}</span>
         </div>
         <a href="#" class="ac_btn">Segui</a>
       </div>
