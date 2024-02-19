@@ -12,7 +12,9 @@ export default {
 
 <template>
   <HeaderNav />
-  <MainContent />
+  <div class="ac_container">
+    <MainContent />
+  </div>
 </template>
 
 <style lang="scss">

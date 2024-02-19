@@ -12,9 +12,20 @@ export default {
 
 <template>
   <main>
-    <h1>main</h1>
-    <LeftMain />
-    <RightMain />
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <div class="left-main">
+            <LeftMain />
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="right-main">
+            <RightMain />
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 

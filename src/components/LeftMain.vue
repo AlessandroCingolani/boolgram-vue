@@ -11,7 +11,6 @@ export default {
 </script>
 
 <template>
-  <h1>left-main</h1>
   <BlockStories />
   <BlockPosts />
 </template>
