@@ -6,14 +6,47 @@ export default {
   },
   data() {
     return {
-      commentsToShow: [],
       showAllComments: false,
     };
   },
   methods: {
-    click(post) {
+    click() {
       this.showAllComments = !this.showAllComments;
-      console.log(post);
+    },
+    calcTimePassed() {
+      const datePublic = new Date(this.post.date.date);
+      const now = new Date();
+
+      const millisecondDiff = now - datePublic;
+      const diffSecond = Math.floor(millisecondDiff / 1000);
+
+      if (diffSecond < 60) {
+        return "less than a minute";
+      } else if (diffSecond < 3600) {
+        const minute = Math.floor(diffSecond / 60);
+        return minute === 1 ? "a minute ago" : minute + " minute ago";
+      } else if (diffSecond < 86400) {
+        const hours = Math.floor(diffSecond / 3600);
+        return hours === 1 ? "an hour ago" : hours + " hours ago";
+      } else {
+        const days = Math.floor(diffSecond / 86400);
+        return days === 1 ? "a day ago" : days + " days ago";
+      }
+    },
+  },
+  computed: {
+    // ternary if showallcomments is true take all comments or only firts 3
+    commentsToShow() {
+      return this.showAllComments
+        ? this.post.comments
+        : this.post.comments.slice(0, 3);
+    },
+    timePassed() {
+      if (this.post) {
+        return this.calcTimePassed();
+      } else {
+        return "";
+      }
     },
   },
 };
@@ -59,20 +92,24 @@ export default {
       </div>
       <!-- Comments -->
       <div class="d-flex flex-column mt-3">
+        <span v-if="post.comments.length == 0">No comments to display </span>
         <span
           class="show-comments"
-          @click="click(post.comments)"
+          @click="showAllComments = !showAllComments"
           v-if="post.comments.length > 3"
-          >Mostra tutti e {{ post.comments.length }} commenti</span
         >
-        <span
-          v-for="(comment, index) in post.comments.slice(0, 3)"
-          :key="comment + index"
-          ><strong>{{ comment.username }} </strong> {{ comment.text }}</span
-        >
+          {{
+            this.showAllComments
+              ? "Reduce comments"
+              : "Show all " + post.comments.length + " comments"
+          }}
+        </span>
+        <span v-for="(comment, index) in commentsToShow" :key="comment + index">
+          <strong>{{ comment.username }}</strong> {{ comment.text }}
+        </span>
       </div>
       <div class="time-posted mt-4">
-        <span>33 Ore fa</span>
+        <span>{{ timePassed }}</span>
       </div>
     </div>
     <!-- Footer -->
