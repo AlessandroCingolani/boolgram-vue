@@ -1,16 +1,32 @@
 <script>
 import SingleStory from "./partials/SingleStory.vue";
+import { store } from "../data/store";
 export default {
   name: "BlockStories",
   components: {
     SingleStory,
   },
+  data() {
+    return {
+      store,
+    };
+  },
+  computed: {
+    getFirstSixStories() {
+      return this.store.profiles.slice(0, 6);
+    },
+  },
 };
 </script>
 
 <template>
-  <div class="stories_container d-flex flex-wrap">
-    <SingleStory />
+  <div class="stories_container d-flex flex-wrap justify-content-center">
+    <SingleStory
+      v-for="story in getFirstSixStories"
+      :key="story.id"
+      :imgProfile="story.profile_picture"
+      :nickname="story.profile_name"
+    />
   </div>
 </template>
 
