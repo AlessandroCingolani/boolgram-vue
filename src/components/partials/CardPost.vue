@@ -1,6 +1,21 @@
 <script>
 export default {
   name: "CardPost",
+  props: {
+    post: Object,
+  },
+  data() {
+    return {
+      commentsToShow: [],
+      showAllComments: false,
+    };
+  },
+  methods: {
+    click(post) {
+      this.showAllComments = !this.showAllComments;
+      console.log(post);
+    },
+  },
 };
 </script>
 
@@ -12,18 +27,15 @@ export default {
     >
       <div class="name-img d-flex align-items-center">
         <div class="profile-img">
-          <img src="/img/profile.jpg" alt="" />
+          <img :src="post.profile_picture" alt="" />
         </div>
-        <span class="ps-4">Name profile</span>
+        <span class="ps-4">{{ post.profile_fullname }}</span>
       </div>
       <i class="fa-solid fa-ellipsis"></i>
     </div>
     <!-- Post image -->
     <div class="post-image">
-      <img
-        src="https://flynn.boolean.careers/exercises/img/boolgram/landscape1.jpg"
-        alt="post-image"
-      />
+      <img :src="post.post_image" alt="post-image" />
     </div>
     <!-- Body card -->
     <div class="card-body">
@@ -33,18 +45,31 @@ export default {
       </div>
       <div class="likes-to">
         <div class="img-likes">
-          <img
-            src="https://flynn.boolean.careers/exercises/img/boolgram/landscape1.jpg"
-            alt="name like"
-          />
+          <img :src="post.likes[0].profile_picture" alt="name like" />
           <span class="ps-3"
-            >Piace a <strong>trudie35 </strong> e <strong>4 altri</strong></span
+            >Piace a <strong>{{ post.likes[0].username }} </strong> e
+            <strong>{{ post.likes.length - 1 }} altri</strong></span
           >
         </div>
       </div>
-      <div class="d-flex flex-column">
-        <span>Mostra tutti e 4 commenti</span>
-        <span><strong>Nome commento </strong>Commento</span>
+      <div class="text-post">
+        <span
+          ><strong>{{ post.profile_name }} </strong> {{ post.post_text }}</span
+        >
+      </div>
+      <!-- Comments -->
+      <div class="d-flex flex-column mt-3">
+        <span
+          class="show-comments"
+          @click="click(post.comments)"
+          v-if="post.comments.length > 3"
+          >Mostra tutti e {{ post.comments.length }} commenti</span
+        >
+        <span
+          v-for="(comment, index) in post.comments.slice(0, 3)"
+          :key="comment + index"
+          ><strong>{{ comment.username }} </strong> {{ comment.text }}</span
+        >
       </div>
       <div class="time-posted mt-4">
         <span>33 Ore fa</span>
@@ -76,6 +101,7 @@ export default {
         overflow: hidden;
         padding: 2px;
         width: 100%;
+        height: 100%;
       }
     }
     span {
@@ -95,6 +121,10 @@ export default {
     height: 30px;
     border-radius: 50%;
   }
+}
+.show-comments {
+  color: gray;
+  cursor: pointer;
 }
 .card-footer {
   padding: 10px;

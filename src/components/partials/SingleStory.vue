@@ -1,21 +1,30 @@
 <script>
 export default {
   name: "SingleStory",
+  props: {
+    imgProfile: String,
+    nickname: String,
+  },
 };
 </script>
 
 <template>
   <div class="story d-flex flex-column align-items-center">
     <div class="story-image">
-      <img src="/img/profile.jpg" alt="" />
+      <img :src="imgProfile" alt="" />
     </div>
-    <span><strong>Name</strong></span>
+    <span
+      ><strong>{{
+        nickname.length < 8 ? nickname : nickname.substring(0, 8) + "..."
+      }}</strong></span
+    >
   </div>
 </template>
 
 <style lang="scss" scoped>
 .story {
-  padding: 40px;
+  cursor: pointer;
+  margin: 40px 30px;
   .story-image {
     width: 70px;
     height: 70px;
@@ -27,6 +36,7 @@ export default {
       overflow: hidden;
       padding: 2px;
       width: 100%;
+      height: 100%;
     }
   }
 }
