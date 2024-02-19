@@ -1,3 +1,18 @@
 body {
-  color: red;
+  background-color:rgb(244, 243, 244) !important;
 }
+
+header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  height: 60px;
+  border: 1px solid rgba(128, 128, 128, 0.285);
+  background-color: white;
+}
+
+.ac_container {
+  padding-top: 80px;
+}
+
