@@ -10,9 +10,6 @@ export default {
     };
   },
   methods: {
-    click() {
-      this.showAllComments = !this.showAllComments;
-    },
     calcTimePassed() {
       const datePublic = new Date(this.post.date.date);
       const now = new Date();
