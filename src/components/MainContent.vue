@@ -1,12 +1,20 @@
 <script>
 import LeftMain from "./LeftMain.vue";
 import RightMain from "./RightMain.vue";
+// import LoaderComponent from "./partials/LoaderComponent.vue";
+import { store } from "../data/store";
 
 export default {
   name: "MainContent",
   components: {
     RightMain,
     LeftMain,
+    // LoaderComponent,
+  },
+  data() {
+    return {
+      store,
+    };
   },
 };
 </script>
@@ -14,6 +22,7 @@ export default {
 <template>
   <main>
     <div class="container">
+      <!-- <LoaderComponent v-if="store.isLoading" /> -->
       <div class="row">
         <div class="col-8">
           <div class="left-main">
