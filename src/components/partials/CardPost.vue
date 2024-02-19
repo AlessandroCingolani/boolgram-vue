@@ -77,8 +77,8 @@ export default {
         <div class="img-likes">
           <img :src="post.likes[0].profile_picture" alt="name like" />
           <span class="ps-3"
-            >Piace a <strong>{{ post.likes[0].username }} </strong> e
-            <strong>{{ post.likes.length - 1 }} altri</strong></span
+            >Like at <strong>{{ post.likes[0].username }} </strong> and
+            <strong>{{ post.likes.length - 1 }} others</strong></span
           >
         </div>
       </div>
