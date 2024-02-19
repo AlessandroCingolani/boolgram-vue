@@ -1,13 +1,11 @@
 <script>
 export default {
-  name: "HeaderNav",
+  name: "BlockStories",
 };
 </script>
 
 <template>
-  <header>
-    <nav>Nav</nav>
-  </header>
+  <h1>Stories</h1>
 </template>
 
 <style lang="scss" scoped></style>

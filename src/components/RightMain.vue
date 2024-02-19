@@ -1,13 +1,11 @@
 <script>
 export default {
-  name: "HeaderNav",
+  name: "RightMain",
 };
 </script>
 
 <template>
-  <header>
-    <nav>Nav</nav>
-  </header>
+  <h1>right-main</h1>
 </template>
 
 <style lang="scss" scoped></style>

@@ -1,16 +1,19 @@
-<template>
-  <HeaderNav />
-</template>
-
 <script>
 import HeaderNav from "./components/HeaderNav.vue";
+import MainContent from "./components/MainContent.vue";
 export default {
   name: "App",
   components: {
     HeaderNav,
+    MainContent,
   },
 };
 </script>
+
+<template>
+  <HeaderNav />
+  <MainContent />
+</template>
 
 <style lang="scss">
 @use "../scss/main.scss";

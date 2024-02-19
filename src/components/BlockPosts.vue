@@ -1,13 +1,11 @@
 <script>
 export default {
-  name: "HeaderNav",
+  name: "BlockPosts",
 };
 </script>
 
 <template>
-  <header>
-    <nav>Nav</nav>
-  </header>
+  <h1>Posts</h1>
 </template>
 
 <style lang="scss" scoped></style>
