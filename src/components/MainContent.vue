@@ -20,7 +20,7 @@ export default {
             <LeftMain />
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-4 ps-4">
           <div class="right-main">
             <RightMain />
           </div>
