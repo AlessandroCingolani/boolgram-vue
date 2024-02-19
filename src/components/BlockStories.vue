@@ -16,7 +16,7 @@ export default {
 
 <style lang="scss" scoped>
 .stories_container {
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   background-color: white;
   border: 1px solid rgb(210, 210, 210);
   border-radius: 8px;
