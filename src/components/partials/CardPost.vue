@@ -189,6 +189,7 @@ export default {
   }
 }
 .show-comments {
+  width: fit-content;
   color: gray;
   cursor: pointer;
 }
