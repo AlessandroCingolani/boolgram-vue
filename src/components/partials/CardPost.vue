@@ -57,7 +57,8 @@ export default {
     >
       <div class="name-img d-flex align-items-center">
         <div class="profile-img">
-          <img :src="post.profile_picture" alt="" />
+          <img v-if="post.profile_picture" :src="post.profile_picture" alt="" />
+          <img v-else src="/img/placeholder.webp" alt="" />
         </div>
         <span class="ps-4">{{ post.profile_fullname }}</span>
       </div>
@@ -73,14 +74,17 @@ export default {
         <i class="fa-regular fa-heart"></i>
         <i class="fa-regular fa-comment"></i>
       </div>
-      <div class="likes-to">
-        <div class="img-likes">
+      <div class="likes-to mb-2">
+        <div v-if="post.likes.length > 0" class="img-likes">
           <img :src="post.likes[0].profile_picture" alt="name like" />
           <span class="ps-3"
-            >Like at <strong>{{ post.likes[0].username }} </strong> and
-            <strong>{{ post.likes.length - 1 }} others</strong></span
+            >Like at <strong>{{ post.likes[0].username }} </strong>
+            <strong v-if="post.likes.length - 1 > 0">
+              and {{ post.likes.length - 1 }} others</strong
+            ></span
           >
         </div>
+        <div v-else></div>
       </div>
       <div class="text-post">
         <span
@@ -89,6 +93,9 @@ export default {
       </div>
       <!-- Comments -->
       <div class="d-flex flex-column mt-3">
+        <span v-if="post.comments.length <= 3 && post.comments.length > 0"
+          >Comments {{ post.comments.length }}</span
+        >
         <span v-if="post.comments.length == 0">No comments to display </span>
         <span
           class="show-comments"
