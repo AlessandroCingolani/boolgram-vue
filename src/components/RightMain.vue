@@ -24,7 +24,7 @@ export default {
     </div>
     <div class="nickname d-flex flex-column">
       <span><strong>michelepapagni</strong></span>
-      <span>Michele Papagni</span>
+      <span class="text-secondary">Michele Papagni</span>
     </div>
     <a class="ac_btn" href="">Pass at</a>
   </div>
@@ -33,8 +33,8 @@ export default {
   <div v-else class="suggestions">
     <div class="row">
       <div class="col-12 d-flex justify-content-between">
-        <span>Suggerimenti per te</span>
-        <span>Mostra tutti</span>
+        <span class="fw-bold text-secondary">Suggestions for you</span>
+        <span><strong>Mostra tutti</strong></span>
       </div>
       <div
         v-for="suggestion in store.profiles"
@@ -47,7 +47,7 @@ export default {
           </div>
           <span class="ps-3">{{ suggestion.profile_name }}</span>
         </div>
-        <a href="#" class="ac_btn">Segui</a>
+        <a href="#" class="ac_btn">Follow</a>
       </div>
     </div>
   </div>
@@ -60,7 +60,7 @@ export default {
 
 <style lang="scss" scoped>
 .img-profile {
-  width: 60px;
+  min-width: 60px;
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
@@ -79,5 +79,10 @@ export default {
       border-radius: 50%;
     }
   }
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: rgba(128, 128, 128, 0.567);
 }
 </style>

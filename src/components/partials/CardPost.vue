@@ -93,7 +93,9 @@ export default {
       </div>
       <!-- Comments -->
       <div class="d-flex flex-column mt-3">
-        <span v-if="post.comments.length <= 3 && post.comments.length > 0"
+        <span
+          class="text-muted"
+          v-if="post.comments.length <= 3 && post.comments.length > 0"
           >Comments {{ post.comments.length }}</span
         >
         <span v-if="post.comments.length == 0">No comments to display </span>
@@ -156,6 +158,29 @@ export default {
     width: 100%;
   }
 }
+
+.card-title {
+  margin-bottom: 10px;
+  i {
+    margin-right: 10px;
+    font-size: 1.3rem;
+    &:hover {
+      cursor: pointer;
+      scale: 1.2;
+    }
+    &:first-child {
+      &:hover {
+        color: red;
+      }
+    }
+    &:last-child {
+      &:hover {
+        color: green;
+      }
+    }
+  }
+}
+
 .likes-to {
   img {
     width: 30px;
