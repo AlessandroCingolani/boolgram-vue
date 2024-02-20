@@ -1,11 +1,15 @@
 <script>
 import { store } from "../data/store";
+import SkeletonSuggestions from "./partials/SkeletonSuggestions.vue";
 export default {
   name: "RightMain",
   data() {
     return {
       store,
     };
+  },
+  components: {
+    SkeletonSuggestions,
   },
 };
 </script>
@@ -25,7 +29,8 @@ export default {
     <a class="ac_btn" href="">Pass at</a>
   </div>
   <!-- Suggestions -->
-  <div class="suggestions">
+  <SkeletonSuggestions v-if="!store.isLoading" />
+  <div v-else class="suggestions">
     <div class="row">
       <div class="col-12 d-flex justify-content-between">
         <span>Suggerimenti per te</span>
