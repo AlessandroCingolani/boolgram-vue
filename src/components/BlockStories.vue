@@ -1,10 +1,12 @@
 <script>
 import SingleStory from "./partials/SingleStory.vue";
 import { store } from "../data/store";
+import SkeletonStories from "./partials/SkeletonStories.vue";
 export default {
   name: "BlockStories",
   components: {
     SingleStory,
+    SkeletonStories,
   },
   data() {
     return {
@@ -21,7 +23,9 @@ export default {
 
 <template>
   <div class="stories_container d-flex flex-wrap justify-content-center">
+    <SkeletonStories v-if="!store.isLoading" />
     <SingleStory
+      v-else
       v-for="story in getFirstSixStories"
       :key="story.id"
       :imgProfile="story.profile_picture"
